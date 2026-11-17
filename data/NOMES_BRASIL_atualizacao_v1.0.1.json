@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 2,
+  "generatedAt": "2026-11-10",
+  "projects": [
+    {
+      "id": "nomes-do-brasil",
+      "name": "Nomes do Brasil — Explorer & Quiz",
+      "description": "Pesquisa de nomes/sobrenomes do Censo 2022 (quantidade, ranking, sexo, idade mediana, década modal, mapas estaduais/municipais e Top 10 absoluto e proporcional), com quiz de 10 perguntas adaptado ao nome escolhido.",
+      "category": "Educação",
+      "platform": "Notebook e celular",
+      "status": "Planejado",
+      "version": "",
+      "url": "",
+      "folder": "nomes-do-brasil",
+      "icon": "search",
+      "color": "#83d9ee",
+      "favorite": false,
+      "order": 18
+    }
+  ],
+  "releases": [
+    {
+      "id": "meu-hub-v1.0.1",
+      "projectId": "meu-hub",
+      "version": "v1.0.1",
+      "date": "2026-11-10",
+      "type": "Atualização",
+      "notes": "Novo projeto planejado Nomes do Brasil — Explorer & Quiz, com requisitos de pesquisa IBGE 2022, mapas por UF/município e quiz adaptativo de dez perguntas."
+    },
+    {
+      "id": "central-projetos-v1.0.1",
+      "projectId": "central-projetos",
+      "version": "v1.0.1",
+      "date": "2026-11-10",
+      "type": "Atualização",
+      "notes": "Novo projeto planejado Nomes do Brasil — Explorer & Quiz, com requisitos de pesquisa IBGE 2022, mapas por UF/município e quiz adaptativo de dez perguntas."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "nomes2022-01",
+      "projectId": "nomes-do-brasil",
+      "title": "Definir integração e validar os endpoints dos dados Nomes no Brasil 2022",
+      "type": "Pesquisa",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Validar endpoints de nome/sobrenome, rank nacional, detalhamento por sexo, mediana, séries históricas e localidades. Utilizar dados do IBGE sem inventar campos não divulgados."
+    },
+    {
+      "id": "nomes2022-02",
+      "projectId": "nomes-do-brasil",
+      "title": "Implementar busca por nome e sobrenome com totais e ranking nacional",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Mostrar contagem nacional, proporção da população, ranking e grafias alternativas quando disponíveis; diferenciar nome e sobrenome."
+    },
+    {
+      "id": "nomes2022-03",
+      "projectId": "nomes-do-brasil",
+      "title": "Exibir sexo, idade mediana e década de nascimento predominante",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Sexo informado pelo Censo (masculino/feminino) e idade mediana. Não apresentar moda exata de idade sem distribuição por idade unitária; exibir década modal e faixa de idade estimada em 2022 devidamente rotulada."
+    },
+    {
+      "id": "nomes2022-04",
+      "projectId": "nomes-do-brasil",
+      "title": "Construir gráfico de evolução por década",
+      "type": "Melhoria",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "Mostrar séries disponíveis por década de nascimento. Não calcular tendência para períodos com supressão estatística."
+    },
+    {
+      "id": "nomes2022-05",
+      "projectId": "nomes-do-brasil",
+      "title": "Mapa do Brasil por estado em modos absoluto e proporcional",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Mapa interativo de estados com legenda, alternância entre quantidade e percentual da população de cada UF; filtros de ordenação."
+    },
+    {
+      "id": "nomes2022-06",
+      "projectId": "nomes-do-brasil",
+      "title": "Mapa municipal e top 10 de municípios por quantidade",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Exibir municípios com frequência divulgada em mapa; lista top 10 em números absolutos; clicar município abre dados oficiais."
+    },
+    {
+      "id": "nomes2022-07",
+      "projectId": "nomes-do-brasil",
+      "title": "Mapa municipal e top 10 proporcional à população local",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Ordenar % pessoas com nome / população residente do município, nunca % de todos os brasileiros com o nome. Indicar limitações de nomes raros e limites de sigilo."
+    },
+    {
+      "id": "nomes2022-08",
+      "projectId": "nomes-do-brasil",
+      "title": "Comparador entre nomes e sobrenomes",
+      "type": "Melhoria",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "Comparar frequência, ranking nacional, distribuição regional e idade mediana onde disponível; deixar claro quando tipos distintos de ranking não são comparáveis."
+    },
+    {
+      "id": "nomes2022-09",
+      "projectId": "nomes-do-brasil",
+      "title": "Criar quiz de 10 perguntas com seleção aleatória e quatro alternativas",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Perguntas adaptadas ao nome buscado; misturar contagem, posição, comparação de rankings, estados, municípios, proporções por sexo e décadas. Cada partida deve ter 10 itens variados e respostas com dados verificáveis."
+    },
+    {
+      "id": "nomes2022-10",
+      "projectId": "nomes-do-brasil",
+      "title": "Adicionar pontuação, respostas explicadas e novo sorteio",
+      "type": "Melhoria",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "Exibir progresso 1/10, acertos e resultado final; permitir jogar novamente com novo conjunto, sem repetir a mesma pergunta na sessão."
+    },
+    {
+      "id": "nomes2022-11",
+      "projectId": "nomes-do-brasil",
+      "title": "Tratar supressão estatística, ausência de dados e municípios pequenos",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "O IBGE suprime contagens abaixo de 20 (Brasil), 15 (UF) e 10 (município); dado ausente != zero. Não usar resultados suprimidos como distratores ou respostas de quiz."
+    },
+    {
+      "id": "nomes2022-12",
+      "projectId": "nomes-do-brasil",
+      "title": "Preparar versão PWA e cadastro no Meu Hub",
+      "type": "Tarefa",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "Projeto responsivo para notebook/celular com histórico de versões e ligação com Central de Projetos; atualização do catálogo no lançamento."
+    }
+  ]
+}

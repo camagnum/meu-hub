@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 8,
+  "generatedAt": "2026-11-11T21:30:00+00:00",
+  "projects": [
+    {
+      "id": "meu-hub",
+      "name": "Meu Hub",
+      "description": "Painel pessoal para acessar e acompanhar todas as aplicações.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.4",
+      "url": "",
+      "folder": "meu-hub",
+      "icon": "grid",
+      "color": "#9edcff",
+      "favorite": true,
+      "order": 0
+    },
+    {
+      "id": "central-projetos",
+      "name": "Central de Projetos e Versões",
+      "description": "Catálogo, histórico de versões, melhorias, bugs e lançamentos dos seus apps.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.4",
+      "url": "central.html",
+      "folder": "meu-hub",
+      "icon": "layers",
+      "color": "#a6e9a5",
+      "favorite": true,
+      "order": 1
+    },
+    {
+      "id": "roleta-bahflix",
+      "name": "Roleta de Filmes BAHFLIX",
+      "description": "Roleta interativa para celular e Smart TV, integrada à biblioteca local do BAHFLIX: filtros, sorteios, histórico e importação JSON.",
+      "category": "Entretenimento",
+      "platform": "Celular e TV",
+      "status": "Ativo",
+      "version": "v1.0.0",
+      "url": "",
+      "folder": "roleta-bahflix",
+      "icon": "shuffle",
+      "color": "#dab2fb",
+      "favorite": false,
+      "order": 13
+    }
+  ],
+  "releases": [
+    {
+      "id": "roleta-bahflix-v1.0.0",
+      "projectId": "roleta-bahflix",
+      "version": "v1.0.0",
+      "date": "2026-11-11",
+      "type": "Lançamento",
+      "notes": "Primeira versão funcional com sorteio, filtros, catálogo via proxy local do BAHFLIX v0.5.3, histórico e modo TV por navegador."
+    },
+    {
+      "id": "meu-hub-v1.0.4",
+      "projectId": "meu-hub",
+      "version": "v1.0.4",
+      "date": "2026-11-11",
+      "type": "Atualização",
+      "notes": "Catálogo, documentação e seed atualizados para o lançamento da Roleta BAHFLIX v1.0.0."
+    },
+    {
+      "id": "central-projetos-v1.0.4",
+      "projectId": "central-projetos",
+      "version": "v1.0.4",
+      "date": "2026-11-11",
+      "type": "Atualização",
+      "notes": "Lançamento da Roleta BAHFLIX v1.0.0 registrado com pendências de teste real na TV."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "roleta-tv-real",
+      "projectId": "roleta-bahflix",
+      "title": "Validar navegação e desempenho com o controle Samsung real",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Modelo QN50Q60DAGXZD; testar setas, OK, Voltar, leitura e conexão na rede."
+    },
+    {
+      "id": "roleta-tmdb-runtime",
+      "projectId": "roleta-bahflix",
+      "title": "Completar duração automaticamente na integração com BAHFLIX",
+      "type": "Melhoria",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "A API /api/catalog v0.5.3 não inclui runtime; usuário pode completar minutos manualmente."
+    },
+    {
+      "id": "roleta-tizen-wgt",
+      "projectId": "roleta-bahflix",
+      "title": "Avaliar versão empacotada .wgt para instalar na Smart TV",
+      "type": "Melhoria",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "A v1.0.0 roda no navegador da TV; pacote instalável Tizen não foi preparado."
+    },
+    {
+      "id": "roleta-sync-history",
+      "projectId": "roleta-bahflix",
+      "title": "Sincronizar histórico e correções entre celular e TV",
+      "type": "Melhoria",
+      "priority": "Baixa",
+      "status": "Pendente",
+      "notes": "No momento dados são locais a cada navegador; exigiria backend/autenticação."
+    },
+    {
+      "id": "roleta-deep-link",
+      "projectId": "roleta-bahflix",
+      "title": "Abrir filme selecionado diretamente no player BAHFLIX",
+      "type": "Melhoria",
+      "priority": "Baixa",
+      "status": "Pendente",
+      "notes": "BAHFLIX v0.5.3 não expõe deep-link documentado para produção."
+    }
+  ]
+}

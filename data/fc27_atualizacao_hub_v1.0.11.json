@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 16,
+  "generatedAt": "2026-11-16T10:22:00-03:00",
+  "projects": [
+    {
+      "id": "meu-hub",
+      "name": "Meu Hub",
+      "description": "Painel pessoal para acessar e acompanhar todas as aplicações.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.11",
+      "url": "",
+      "folder": "meu-hub",
+      "icon": "grid",
+      "color": "#9edcff",
+      "favorite": true,
+      "order": 0
+    },
+    {
+      "id": "central-projetos",
+      "name": "Central de Projetos e Versões",
+      "description": "Catálogo, histórico de versões, melhorias, bugs e lançamentos dos seus apps.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.11",
+      "url": "central.html",
+      "folder": "meu-hub",
+      "icon": "layers",
+      "color": "#a6e9a5",
+      "favorite": true,
+      "order": 1
+    },
+    {
+      "id": "fc27-tracker",
+      "name": "FC 27 Ultimate Tracker",
+      "description": "Estatísticas, elencos, álbum, Rivals, WL e outros modos do EA FC 27. Projeto original.",
+      "category": "Games",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.75.0",
+      "url": "",
+      "folder": "fc27-tracker",
+      "icon": "game",
+      "color": "#c5a8ff",
+      "favorite": true,
+      "order": 2
+    }
+  ],
+  "releases": [
+    {
+      "id": "fc27-tracker-v1.75.0",
+      "projectId": "fc27-tracker",
+      "version": "v1.75.0",
+      "date": "2026-11-16",
+      "type": "Atualização",
+      "notes": "43 melhorias acumuladas: busca de cadastro, Central do Clube, 29 melhorias de desempenho, gestão e interface. ZIPs completo e incremental, sem deploy; sincronização incremental experimental desativada por padrão."
+    },
+    {
+      "id": "meu-hub-v1.0.11",
+      "projectId": "meu-hub",
+      "version": "v1.0.11",
+      "date": "2026-11-16",
+      "type": "Atualização",
+      "notes": "Catálogo rev. 16 e continuidade atualizados com FC27 Tracker v1.75.0; sem deploy."
+    },
+    {
+      "id": "central-projetos-v1.0.11",
+      "projectId": "central-projetos",
+      "version": "v1.0.11",
+      "date": "2026-11-16",
+      "type": "Atualização",
+      "notes": "Catálogo rev. 16 e continuidade atualizados com FC27 Tracker v1.75.0; sem deploy."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "fc27-v175-validar",
+      "projectId": "fc27-tracker",
+      "title": "Validar v1.75.0 com dados reais e PWA",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Testar cadastro, análises, backup, exportação e sincronização integral no ambiente real; testes isolados aprovados."
+    },
+    {
+      "id": "fc27-v175-delta",
+      "projectId": "fc27-tracker",
+      "title": "Homologar sincronização incremental opcional",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Não habilitar antes de validar SQL, CAS, conflitos, RLS e recuperação em ambiente separado com backup."
+    }
+  ]
+}

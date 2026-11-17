@@ -1,0 +1,12 @@
+{
+  "id": "meu-hub",
+  "name": "Meu Hub + Central de Projetos e Versões",
+  "version": "2.0.0",
+  "releaseDate": "2026-11-16",
+  "changelog": [
+    "Descoberta de sites pela API do Netlify e histórico de deploys.",
+    "Leitura de version.json do deploy publicado; comparação com a versão registrada.",
+    "Vínculos manuais e automáticos, atualização periódica e proteção por chave de acesso.",
+    "Preservação dos dados locais e do catálogo da v1.0.11."
+  ]
+}

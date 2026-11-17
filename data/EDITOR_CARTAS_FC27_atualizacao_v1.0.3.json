@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 7,
+  "generatedAt": "2026-11-11T15:53:31+00:00",
+  "projects": [
+    {
+      "id": "meu-hub",
+      "name": "Meu Hub",
+      "description": "Painel pessoal para acessar e acompanhar todas as aplicações.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.3",
+      "url": "",
+      "folder": "meu-hub",
+      "icon": "grid",
+      "color": "#9edcff",
+      "favorite": true,
+      "order": 0
+    },
+    {
+      "id": "central-projetos",
+      "name": "Central de Projetos e Versões",
+      "description": "Catálogo, histórico de versões, melhorias, bugs e lançamentos dos seus apps.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.3",
+      "url": "central.html",
+      "folder": "meu-hub",
+      "icon": "layers",
+      "color": "#a6e9a5",
+      "favorite": true,
+      "order": 1
+    },
+    {
+      "id": "editor-cartas-fc27",
+      "name": "Editor de Fotos e Cartas FC 27",
+      "description": "Editor de retratos com transparência, modelos de cartas FC 27 e exportação PNG/ZIP em lote.",
+      "category": "Games",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.0",
+      "url": "",
+      "folder": "editor-cartas-fc27",
+      "icon": "image",
+      "color": "#d5fa76",
+      "favorite": false,
+      "order": 9
+    }
+  ],
+  "releases": [
+    {
+      "id": "editor-cartas-fc27-v1.0.0",
+      "projectId": "editor-cartas-fc27",
+      "version": "v1.0.0",
+      "date": "2026-11-11",
+      "type": "Lançamento",
+      "notes": "Editor local de fotos JPG/PNG/WebP com recorte, zoom, remoção de fundo por cor/pincel, cinco estilos de carta, exportação PNG e lote em ZIP; PWA."
+    },
+    {
+      "id": "meu-hub-v1.0.3",
+      "projectId": "meu-hub",
+      "version": "v1.0.3",
+      "date": "2026-11-11",
+      "type": "Atualização",
+      "notes": "Catálogo e documentação de continuidade atualizados para o lançamento do Editor de Fotos e Cartas FC 27 v1.0.0."
+    },
+    {
+      "id": "central-projetos-v1.0.3",
+      "projectId": "central-projetos",
+      "version": "v1.0.3",
+      "date": "2026-11-11",
+      "type": "Atualização",
+      "notes": "Catálogo e documentação de continuidade atualizados para o lançamento do Editor de Fotos e Cartas FC 27 v1.0.0."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "editor27-validar-netlify",
+      "projectId": "editor-cartas-fc27",
+      "title": "Validar deploy HTTPS/Netlify e instalação PWA",
+      "type": "Teste",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "Pós-v1.0.0; não incluído na versão publicada."
+    },
+    {
+      "id": "editor27-testar-importacao-tracker",
+      "projectId": "editor-cartas-fc27",
+      "title": "Importar PNG no FC 27 Tracker v71 e verificar transparência após conversão para WebP",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Pós-v1.0.0; não incluído na versão publicada."
+    },
+    {
+      "id": "editor27-mascara-ia",
+      "projectId": "editor-cartas-fc27",
+      "title": "Avaliar remoção opcional de fundo assistida por IA local, sem upload",
+      "type": "Melhoria",
+      "priority": "Baixa",
+      "status": "Pendente",
+      "notes": "Pós-v1.0.0; não incluído na versão publicada."
+    },
+    {
+      "id": "editor27-area-segura",
+      "projectId": "editor-cartas-fc27",
+      "title": "Criar guia de enquadramento de busto, cotovelos para cima",
+      "type": "Melhoria",
+      "priority": "Média",
+      "status": "Pendente",
+      "notes": "Pós-v1.0.0; não incluído na versão publicada."
+    }
+  ]
+}

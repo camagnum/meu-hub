@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 2,
+  "generatedAt": "2026-11-10",
+  "projects": [
+    {"id":"app-demonstracao","name":"App de Demonstração","description":"Projeto fictício para explicar o formato do catálogo.","category":"Outros","platform":"Notebook","status":"Ativo","version":"v1.0.0","url":"","folder":"app-demonstracao","icon":"grid","color":"#9bc9e9","favorite":false,"order":99}
+  ],
+  "releases": [
+    {"id":"app-demonstracao-v1.0.0","projectId":"app-demonstracao","version":"v1.0.0","date":"2026-11-10","type":"Lançamento","notes":"Registro fictício para demonstração. Não é um aplicativo real."}
+  ],
+  "tasks": []
+}

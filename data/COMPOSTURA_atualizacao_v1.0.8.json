@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 13,
+  "generatedAt": "2026-11-14T09:42:00-03:00",
+  "projects": [
+    {
+      "id": "meu-hub",
+      "name": "Meu Hub",
+      "description": "Painel pessoal para acessar e acompanhar todas as aplicações.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.8",
+      "url": "",
+      "folder": "meu-hub",
+      "icon": "grid",
+      "color": "#9edcff",
+      "favorite": true,
+      "order": 0
+    },
+    {
+      "id": "central-projetos",
+      "name": "Central de Projetos e Versões",
+      "description": "Catálogo, histórico de versões, melhorias, bugs e lançamentos dos seus apps.",
+      "category": "Produtividade",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.0.8",
+      "url": "central.html",
+      "folder": "meu-hub",
+      "icon": "layers",
+      "color": "#a6e9a5",
+      "favorite": true,
+      "order": 1
+    },
+    {
+      "id": "compostura",
+      "name": "Compostura",
+      "description": "Aplicativo pessoal privado — prévia de desenvolvimento; sem publicação.",
+      "category": "Casa e família",
+      "platform": "Celular",
+      "status": "Planejado",
+      "version": "v0.1.0",
+      "url": "",
+      "folder": "compostura",
+      "icon": "compostura",
+      "color": "#a45d78",
+      "favorite": false,
+      "order": 19
+    }
+  ],
+  "releases": [
+    {
+      "id": "compostura-v0.1.0",
+      "projectId": "compostura",
+      "version": "v0.1.0",
+      "date": "2026-11-14",
+      "type": "Lançamento",
+      "notes": "Fundação experimental e prévia; uso de demonstração somente. Build e integração real pendentes, sem deploy."
+    },
+    {
+      "id": "meu-hub-v1.0.8",
+      "projectId": "meu-hub",
+      "version": "v1.0.8",
+      "date": "2026-11-14",
+      "type": "Atualização",
+      "notes": "Catálogo atualizado com Compostura v0.1.0, ícone e tarefas."
+    },
+    {
+      "id": "central-projetos-v1.0.8",
+      "projectId": "central-projetos",
+      "version": "v1.0.8",
+      "date": "2026-11-14",
+      "type": "Atualização",
+      "notes": "Projeto Compostura incluído com pendências técnicas e continuidade discreta."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "compostura-build",
+      "projectId": "compostura",
+      "title": "Validar build Angular e instalação PWA",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Dependências e celulares reais ainda não homologados."
+    },
+    {
+      "id": "compostura-cloud",
+      "projectId": "compostura",
+      "title": "Configurar e testar infraestrutura exclusiva",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Migrations e autenticação; sem deploy."
+    },
+    {
+      "id": "compostura-security",
+      "projectId": "compostura",
+      "title": "Homologar segurança e recuperação",
+      "type": "Teste",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Revisão e testes de integração antes de uso real."
+    },
+    {
+      "id": "compostura-next",
+      "projectId": "compostura",
+      "title": "Implementar v0.2.0",
+      "type": "Melhoria",
+      "priority": "Alta",
+      "status": "Pendente",
+      "notes": "Sincronização e funcionalidades conforme documentação do projeto."
+    }
+  ]
+}
