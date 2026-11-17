@@ -43,3 +43,8 @@ Todos os novos releases precisam incluir `version.json` no **diretório publicad
 `npm test` executa testes locais com respostas simuladas. Sem acesso à conta e sem deploy real neste ambiente. Homologue a autenticação, lista de sites, permalinks e version.json na conta efetiva, inclusive rollback. Se a função não funcionar, confira logs Netlify e variáveis. Não compartilhe credenciais.
 
 Referências oficiais: https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/ ; https://docs.netlify.com/build/functions/environment-variables/ ; https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/ .
+
+
+## v2.1.0 — atualização do catálogo
+
+Na aba Netlify, após Conectar e sincronizar, os projetos com versão publicada superior exibem **Atualizar catálogo**. A opção **Atualizar automaticamente este projeto** fica desligada por padrão e só atualiza o catálogo local após uma nova consulta integral bem-sucedida. O changelog do version.json vai para o histórico sem substituição de notas manuais ou duplicatas. Se não houver ID no JSON, o vínculo pode ser feito por nome único, URL ou slug; prefira adicionar o ID correto. A automação depende da aba aberta/conectada; não é um job persistente no servidor. Em caso de rollback, a versão do catálogo não diminui.

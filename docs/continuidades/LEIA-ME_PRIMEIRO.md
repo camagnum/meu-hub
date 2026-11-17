@@ -1,6 +1,6 @@
 # Índice dos arquivos de continuidade
 
-Atualizado em 10/11/2026. São **20 entradas** do catálogo do Meu Hub, inclusive os dois módulos integrados.
+Atualizado em 17/11/2026. São **21 entradas** do catálogo do Meu Hub, inclusive os dois módulos integrados.
 
 ## Como usar
 

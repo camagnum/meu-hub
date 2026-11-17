@@ -1,10 +1,12 @@
+> **Verificação de publicação em 17/11/2026:** `version.json` do FC Tracker declara a versão 1.75.4, releaseDate 2026-11-16. Sem changelog no arquivo; não inferir as alterações dessa versão.
+
 # Continuidade do projeto — FC 27 Ultimate Tracker
 
 > **Documento de referência para iniciar um novo chat**  
 > Atualização documental: 16 de novembro de 2026  
 > Identificador na Central: `fc27-tracker`  
 > Estado verificado: **Ativo**  
-> Última versão conhecida: **v1.75.0**  
+> Última versão conhecida: **v1.75.4**  
 > Plataforma: Notebook e celular
 
 ## 1. Objetivo do projeto

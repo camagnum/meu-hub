@@ -1,11 +1,18 @@
 # Continuidade do projeto — Meu Hub
 
 > **Documento de referência para iniciar um novo chat**  
-> Atualização documental: 16 de novembro de 2026  
+> Atualização documental: 17 de novembro de 2026  
 > Identificador na Central: `meu-hub`  
 > Estado verificado: **Ativo**  
-> Última versão conhecida: **v2.0.0**  
+> Última versão conhecida: **v2.1.0**  
 > Plataforma: Notebook e celular
+
+## Atualização v2.1.0
+
+- Monitor Netlify v2.1.0 aceita version.json sem id se o vínculo por nome/URL/slug é único, com opção manual em ambiguidades.
+- Atualização do catálogo com um clique ou automática por projeto (opt-in), no localStorage, durante sessão conectada e aba aberta; nunca sobrescrever versões mais novas após rollback.
+- Registros com changelog quando disponível, sem duplicatas. Sem changelog, informar ausência.
+- O estado de outro dispositivo não é sincronizado; para operação contínua sem navegador aberto será necessário backend persistente.
 
 ## 1. Objetivo do projeto
 

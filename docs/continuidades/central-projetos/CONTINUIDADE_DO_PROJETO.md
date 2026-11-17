@@ -1,11 +1,16 @@
 # Continuidade do projeto — Central de Projetos e Versões
 
 > **Documento de referência para iniciar um novo chat**  
-> Atualização documental: 16 de novembro de 2026  
+> Atualização documental: 17 de novembro de 2026  
 > Identificador na Central: `central-projetos`  
 > Estado verificado: **Ativo**  
-> Última versão conhecida: **v2.0.0**  
+> Última versão conhecida: **v2.1.0**  
 > Plataforma: Notebook e celular
+
+## Atualização v2.1.0
+
+- Atualização de versões do catálogo por botão (após consulta Netlify) e sincronização automática por projeto (opt-in). Histórico integrado com changelog declarado; sem duplicatas e sem downgrade após rollback.
+- A automação depende de sessão conectada e aba aberta; registros continuam locais.
 
 ## 1. Objetivo do projeto
 

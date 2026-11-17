@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": 17,
-  "generatedAt": "2026-11-16T14:23:00Z",
+  "catalogRevision": 20,
+  "generatedAt": "2026-11-17T13:45:24+00:00",
   "projects": [
     {
       "id": "meu-hub",
@@ -10,7 +10,7 @@
       "category": "Produtividade",
       "platform": "Notebook e celular",
       "status": "Ativo",
-      "version": "v2.0.0",
+      "version": "v2.1.0",
       "url": "",
       "folder": "meu-hub",
       "icon": "grid",
@@ -25,7 +25,7 @@
       "category": "Produtividade",
       "platform": "Notebook e celular",
       "status": "Ativo",
-      "version": "v2.0.0",
+      "version": "v2.1.0",
       "url": "central.html",
       "folder": "meu-hub",
       "icon": "layers",
@@ -40,7 +40,7 @@
       "category": "Games",
       "platform": "Notebook e celular",
       "status": "Ativo",
-      "version": "v1.75.0",
+      "version": "v1.75.4",
       "url": "",
       "folder": "fc27-tracker",
       "icon": "game",
@@ -647,6 +647,30 @@
       "date": "2026-11-15",
       "type": "Lançamento",
       "notes": "Plataforma de curso estática, 24 módulos; progresso local. Checkpoints Angular compilados pendentes. Sem publicação confirmada."
+    },
+    {
+      "id": "meu-hub-v2.1.0",
+      "projectId": "meu-hub",
+      "version": "v2.1.0",
+      "date": "2026-11-17",
+      "type": "Atualização",
+      "notes": "Sincronização Netlify com atualização assistida e automática por projeto; leitura de version.json sem ID, importação de changelog e proteção contra rollback."
+    },
+    {
+      "id": "central-projetos-v2.1.0",
+      "projectId": "central-projetos",
+      "version": "v2.1.0",
+      "date": "2026-11-17",
+      "type": "Atualização",
+      "notes": "A Central compartilha com o Meu Hub a atualização de versão do catálogo e o histórico integrado dos releases Netlify."
+    },
+    {
+      "id": "fc27-tracker-v1.75.4",
+      "projectId": "fc27-tracker",
+      "version": "v1.75.4",
+      "date": "2026-11-16",
+      "type": "Atualização",
+      "notes": "Versão 1.75.4 confirmada pelo version.json da publicação Netlify; changelog não informado."
     }
   ],
   "tasks": [

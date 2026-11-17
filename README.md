@@ -1,4 +1,15 @@
-# Meu Hub + Central de Projetos e Versões · v2.0.0
+# Meu Hub + Central de Projetos e Versões · v2.1.0
+
+## Novo na v2.1.0 — sincronização de versões
+
+O monitor Netlify agora reconhece metadados `version.json` sem `id` quando o vínculo é único por nome, URL ou slug do site. Prefira sempre incluir o `id` nos apps novos. Se existir ambiguidade, vincule o site manualmente.
+
+Na aba **Netlify**: após conectar com `HUB_SYNC_KEY`, use **Atualizar catálogo para ...** para confirmar individualmente um novo lançamento; ou marque **Atualizar automaticamente este projeto** para incorporar novos lançamentos ao catálogo e ao histórico a cada consulta bem-sucedida. A preferência vem desativada e é individual por aplicativo. Não há downgrade após rollback, e as notas de versões já registradas não são sobrescritas.
+
+O `changelog` é importado quando consta no `version.json`. Quando ausente, o Hub registra explicitamente que não foi informado, sem inventar alterações. As versões publicadas são consultadas a cada cinco minutos enquanto a aba estiver aberta e conectada. Por segurança, a chave não é armazenada, e a automação não funciona com o navegador fechado; para automação contínua de servidor seriam necessários banco e credenciais apropriadas. As preferências e o histórico continuam salvos neste navegador, no mesmo endereço do Hub.
+
+**Para instalar:** preserve o site Netlify atual, faça backup em Configurações, envie esta versão ao repositório GitHub vinculado ao Netlify ou publique com Netlify CLI e confirme a publicação da função `netlify-sync`. As variáveis `NETLIFY_ACCESS_TOKEN` e `HUB_SYNC_KEY` já configuradas podem ser mantidas.
+
 
 ## Novo na v2.0.0 — Netlify
 

@@ -1,3 +1,12 @@
+# v2.1.0 — 2026-11-17
+
+- Novo botão de atualização do catálogo conforme a versão publicada no Netlify.
+- Habilitação individual de sincronização automática (desativada por padrão), aplicada apenas em consultas completas e bem-sucedidas.
+- Compatibilidade com version.json antigo, sem id, mediante associação única por nome, URL ou nome do site; vínculo manual continua disponível.
+- Atualização do histórico de versões com changelog real quando informado, sem duplicar lançamentos nem rebaixar versões após rollback.
+- Versão atual do Meu Hub e Central atualizada para 2.1.0; PWA com cache renovado.
+- Credenciais Netlify continuam restritas à função; chave de sessão não é persistida.
+
 # v2.0.0 — 16/11/2026
 
 - Integração Netlify somente leitura, função autenticada, descoberta de sites, versões publicadas e deploys.

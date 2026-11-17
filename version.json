@@ -1,12 +1,13 @@
 {
   "id": "meu-hub",
   "name": "Meu Hub + Central de Projetos e Versões",
-  "version": "2.0.0",
-  "releaseDate": "2026-11-16",
+  "version": "2.1.0",
+  "releaseDate": "2026-11-17",
   "changelog": [
-    "Descoberta de sites pela API do Netlify e histórico de deploys.",
-    "Leitura de version.json do deploy publicado; comparação com a versão registrada.",
-    "Vínculos manuais e automáticos, atualização periódica e proteção por chave de acesso.",
-    "Preservação dos dados locais e do catálogo da v1.0.11."
+    "Atualização do catálogo com um clique quando o Netlify publica uma versão mais recente.",
+    "Sincronização automática configurável por projeto, desativada por padrão.",
+    "Reconhecimento seguro de version.json sem id por nome, URL ou slug, com vínculo manual quando necessário.",
+    "Registro de lançamentos e changelog no histórico sem duplicatas e sem downgrade após rollback.",
+    "Preferências e dados preservados no navegador; credenciais temporárias apenas em memória."
   ]
 }
