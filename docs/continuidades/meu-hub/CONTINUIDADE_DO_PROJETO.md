@@ -1,3 +1,11 @@
+> **Atualização prioritária (19/11/2026): Meu Hub v2.2.0**, catálogo revisão 39. Versões públicas consultadas sem chave em `/.netlify/functions/hub-public-versions` ao abrir e a cada 5 minutos durante a sessão aberta. Informações administrativas Netlify continuam atrás de HUB_SYNC_KEY. A versão publicada é exibida como número principal quando verificada; a versão de desenvolvimento registrada fica preservada. O backend público limita o retorno a apps públicos já catalogados. Dados pessoais continuam em localStorage; navegador fechado não atualiza a base local.
+
+> **Atualização (19/11/2026):** Meu Hub v2.1.16, catálogo revisão 38, registra FC27 Tracker v1.82.0 mas mantém a versão Netlify publicada independente. ZIP incremental de v2.1.15 e versão completa disponíveis.
+
+> **Atualização prioritária (18/11/2026):** Meu Hub **v2.1.13**, catálogo revisão **35**; Tracker registrada em **v1.81.1**. A versão publicada deve ser verificada separadamente.
+
+> **Atualização prioritária (18/11/2026):** Meu Hub **v2.1.12**, catálogo revisão 34; versão registrada FC27 Tracker **v1.81.0**. A publicação em produção e sincronização real devem ser verificadas separadamente.
+
 # Continuidade do projeto — Meu Hub
 
 > **Documento de referência para iniciar um novo chat**  
@@ -110,3 +118,17 @@ Base oficial: `meu_hub_v1.0.11.zip`; feed rev. 16.
 ## Atualização v2.0.0 (16/11/2026)
 
 Base v1.0.11; novo ZIP `meu_hub_v2.0.0.zip`, raiz `meu-hub`; feed revisão 17. Aba Netlify, função `netlify/functions/netlify-sync.cjs` somente leitura e protegida por `HUB_SYNC_KEY` aleatória; `NETLIFY_ACCESS_TOKEN` exclusivamente no servidor. Metadados do deploy publicado separados dos registros de desenvolvimento, descoberta automática e vínculo manual/automático, histórico e consulta periódica durante sessão. Chave em memória, cache de metadados local. `version.json` obrigatório na raiz publicada; build `node tools/build.cjs`, publish `dist`, deploy via Git ou CLI. Consultas reais e publicação não validadas. Manter `meuhub-state-v1` e mesmo domínio. Dados locais não sincronizados. Guia `docs/NETLIFY_CONFIGURACAO.md`. Atualizar catálogo e continuidade nos próximos releases; sites novos descobertos devem ser confirmados antes de entrar no catálogo.
+
+## Atualização v2.1.2 (17/11/2026)
+
+Catálogo revisão 24 com FC27 Tracker v1.76.1 e Meu Hub / Central v2.1.2, sem deploy. Preservar função Netlify, versão publicada distinta da registrada e tokens apenas no ambiente da plataforma.
+
+
+## Atualização v2.1.3 (17/11/2026)
+
+Catálogo revisão 25; FC 27 Tracker original v1.76.2, Meu Hub + Central v2.1.3. Apenas arquivos do projeto atualizados, sem publicação em Netlify, sem modificação de tokens nem sincronização real. Diferenciar sempre versão registrada da publicada.
+
+
+## Registro de 17/11/2026 · Hub v2.1.4
+
+Catálogo revisão 26. FC27 Tracker v1.76.3: temporada com fim oficial para estatísticas e data independente e opcional de conclusão do Passe da Temporada. ZIPs v1.76.3 publicados na Biblioteca, mas não implantados no Netlify.

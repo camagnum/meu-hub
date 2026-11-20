@@ -1,3 +1,11 @@
+> **Atualização (19/11/2026):** FC 27 Tracker v1.82.0 inclui auditoria por liga feminina, OVR e raridade FC27 base, CSV de pendências, reparos com backup e exclusão de 422 figurinhas provisórias da NWSL da contagem do álbum. Cartas especiais preservadas e não automaticamente auditadas; requer confirmação individual e testes após publicação.
+
+> **Atualização prioritária (18/11/2026):** FC 27 Tracker **v1.81.1** gerada sobre v1.81.0, adicionando técnicas **Chute rasteiro** (`lowShot`) e **Chute colocado** (`placedShot`) no seletor único de finalização, com relatório, gráfico, ranking, CSV, retrospectiva e marcos 1/5/10/25. Gols só computam quando classificação confirmada. ZIP incremental não contém `cloud-config.js`, raiz sempre `fc27-tracker`. Nenhuma migração SQL. Arquivos ainda não publicados no Netlify e não homologados com Supabase real.
+
+> **Atualização prioritária (18/11/2026):** FC 27 Tracker **v1.81.0** foi criada e testada localmente, **registrada no Hub, não necessariamente publicada**. Gols com origem Bola rolando/Bola parada, subtipos condicionais, Cavadinha/Jogada individual e pé real pré-selecionado; momentos decisivos opcionais (viradas, últimos minutos, com jogador expulso); botão de expulsão com motivo; recuperação que inicia contra-ataque perigoso; relatórios, marcos, CSV e alinhamento Disconnect/Quit. Os padrões de gols só contam após confirmação. Identificador `fc27-tracker`, raiz ZIP `fc27-tracker`, preservar `cloud-config.js`, histórico/Supabase e fotos. Homologação com dados reais pendente.
+
+> **Versão registrada no catálogo em 18/11/2026:** v1.79.0. Ainda não implica publicação no Netlify nem validação de sincronização real.
+
 > **Verificação de publicação em 17/11/2026:** `version.json` do FC Tracker declara a versão 1.75.4, releaseDate 2026-11-16. Sem changelog no arquivo; não inferir as alterações dessa versão.
 
 # Continuidade do projeto — FC 27 Ultimate Tracker
@@ -70,3 +78,42 @@ Base oficial para futuras mudanças: `FC27_Tracker_v1.74.0_Completo.zip`; increm
 ## Atualização v1.75.0 (16/11/2026)
 43 melhorias acumuladas: busca de cadastro, Central do Clube, 29 melhorias de desempenho, gestão e interface. ZIPs completo e incremental, sem deploy; sincronização incremental experimental desativada por padrão.
 Base oficial: `FC27_Tracker_v1.75.0_Completo.zip`; incremental `FC27_Tracker_v1.75.0_Atualizacao_v1.74.0.zip`, sem cloud-config.js. Patches pós-v1.74.0 incorporados: não reaplicar. SQL incremental opcional ainda não homologado; manter desativado.
+
+
+## Atualização v1.76.0 (17/11/2026)
+Implementados: formações favoritas independentes da escalação (posições/funções), 11 vagas automáticas, funções LD/LE Defensivo/Apoio/Ala; VOL Defensivo/Apoio; substituições por titular, ranking de saídas, avaliação híbrida após salvar a partida e indicadores individuais, busca no Elenco, Gauntlet perfeito, melhorias de layout e rolagem.
+ZIP incremental: `FC27_Tracker_v1.76.0_Atualizacao_v1.75.4.zip` (sem `cloud-config.js`); completo: `FC27_Tracker_v1.76.0_Completo.zip`. Pasta interna `fc27-tracker`. Testes JS/regras/Chromium isolado passaram, Supabase e publicação reais ainda não testados. Preservar dados, backups e arquivos locais.
+
+## Atualização v1.76.1 (17/11/2026)
+
+Central de Atualizações no Tracker: compara versão em execução (constante do código) com `version.json` publicado no Netlify usando consulta sem cache; histórico de versões, verificação manual e automática, estado PWA (instalação de nova versão somente após service worker preparado), rodapé com versão. Nenhuma alteração de banco Supabase. Arquivos completos e incrementais de v1.76.0, mantendo `cloud-config.js` local. Validado em Chromium isolado com manifesto simulado; ainda não publicado nem testado em Netlify real.
+
+
+## Atualização v1.76.2 (17/11/2026)
+
+Patch sobre v1.76.1: removida a busca global duplicada do módulo `features-v58.js`; mantida a busca global avançada do `app.js` com botão "⌕ Buscar" no topo, Ctrl/⌘+K, filtros Jogadores, Cartas, Partidas, Páginas, Tudo e novo filtro Formações. Busca contempla nomes de formações favoritas, esquema, funções e formações utilizadas em partidas, com navegação para painel Formações e destaque no cartão da formação salva. Adicionadas formações à busca sem mexer nos registros; version.json/pwa.js/service-worker.js atualizados para 1.76.2. ZIP incremental exclui `cloud-config.js`. Testes de navegador isolado aprovados; **não foi feito deploy** nem teste com Supabase real nesta entrega.
+
+
+## Registro de 17/11/2026 · FC27 Tracker v1.76.3
+
+Catálogo revisão 26. FC27 Tracker v1.76.3: temporada com fim oficial para estatísticas e data independente e opcional de conclusão do Passe da Temporada. ZIPs v1.76.3 publicados na Biblioteca, mas não implantados no Netlify.
+
+## v1.76.5
+
+Unificação assistida de nomes do mesmo atleta no Álbum; preserva raridades distintas e dados de partidas. Escolha do nome e foto, proteção contra colisões, backup antes da confirmação. Não precisa de nova tabela SQL.
+
+## v1.76.6–v1.76.7
+
+Novos fundos de cartas no Álbum, intensificados em 1.76.7: TOTW preto/dourado, Icons marfim/ouro, especiais galáxia neon, Heróis vinho/cobre. Nenhum dado é modificado e o manifest mantém id fc27-tracker.
+
+
+## FC27 v1.80.0 (18/11/2026)
+
+Cinco módulos consultivos em **Análises e recordes → Inteligência & retrospectiva**: tendências com amostra mínima e notas híbridas, substituições, auditoria somente leitura e CSV, conquistas por gols/defesas/gauntlets, retrospectiva com resultados e marcos da temporada.
+Pacotes: `FC27_Tracker_v1.80.0_Completo.zip` e `FC27_Tracker_v1.80.0_Atualizacao_v1.79.0.zip`; delta sem `cloud-config.js`. Sem alterações SQL nem deploy.
+**Não implementado:** tags de virada, derrota no fim ou vitória no último lance; depende de discussão dos critérios.
+
+
+## Registro 2026-11-18 — FC27 v1.81.2
+
+Corrigida Central de Atualizações em `pwa.js`: `FALLBACK_HISTORY` tinha sido renomeada indevidamente para `RELEASES` na v1.81.1. Atualizados script de PWA, service worker, manifesto e teste de inicialização, preservando dados. Registrar publicação Netlify somente após conferência da versão publicada.

@@ -1,4 +1,18 @@
-# Meu Hub + Central de Projetos e Versões · v2.1.0
+# Meu Hub + Central de Projetos e Versões · v2.2.0
+
+## Novo na v2.2.0 — versões do Netlify sem chave
+
+**O número exibido nos cards é a versão publicada no Netlify** quando há um `version.json` público, válido e com vínculo único a um projeto ativo no catálogo. Se não houver confirmação, é exibida a versão cadastrada. A ficha do projeto mantém as duas informações separadas: **cadastrada (desenvolvimento)** e **publicada**.
+
+O Meu Hub consulta `/.netlify/functions/hub-public-versions` ao abrir e a cada 5 minutos enquanto estiver aberto, sem exigir `HUB_SYNC_KEY`. O endpoint usa `NETLIFY_ACCESS_TOKEN` somente no servidor Netlify e responde exclusivamente com `id`, nome, versão, data e changelog de **apps públicos já catalogados**, sem expor inventário privado, token ou histórico de deploys.
+
+Versões mais recentes publicamente verificadas entram no catálogo local e histórico automaticamente, sem reduzir números já registrados após rollback nem duplicar lançamentos. Sites novos e não catalogados e a análise detalhada de deploys ainda dependem da área administrativa com `HUB_SYNC_KEY` ou de cadastro manual. O estado pessoal é salvo neste navegador; para sincronizar suas personalizações entre dispositivos ou funcionar com o navegador fechado, será necessário um backend persistente adicional.
+
+**Instalação:** preserve o mesmo site Netlify e faça backup no Hub. Use o ZIP completo v2.2.0 se seu checkout GitHub ainda for v2.1.0; o incremental é destinado exclusivamente à base v2.1.16. Publique via Git ou Netlify CLI incluindo **as duas funções** `hub-public-versions` e `netlify-sync` e confirme `/version.json` como v2.2.0.
+
+---
+
+## Histórico de v2.1.0
 
 ## Novo na v2.1.0 — sincronização de versões
 
@@ -136,3 +150,20 @@ Todos os novos lançamentos devem usar MAJOR.MINOR.PATCH: MAJOR para mudanças i
 
 ## v1.0.11 — 16/11/2026
 Catálogo rev. 16 registra FC27 Tracker v1.75.0. Para atualizar somente o catálogo, importe `data/fc27_atualizacao_hub_v1.0.11.json` nas configurações. A instalação não publica os projetos automaticamente.
+
+
+## v2.1.1
+Catálogo atualizado para FC27 Tracker v1.76.0 (registrado, não publicado). Ver `CHANGELOG.md`.
+
+
+## v2.1.2
+FC27 Tracker v1.76.1 registrado no catálogo rev. 24; implantação no GitHub/Netlify é separada. Ver `CHANGELOG.md`.
+
+
+## v2.1.3
+Catálogo revisão 25: FC27 Tracker v1.76.2 (busca global única e filtro de formações). Atualização de catálogo não realiza deploy do Tracker. Veja `CHANGELOG.md`.
+
+
+## v2.1.4
+
+Catálogo revisão 26: FC27 Tracker v1.76.3. Datas independentes de fim oficial e conclusão de passe da temporada. Não altera os projetos publicados.

@@ -1,3 +1,104 @@
+## v2.2.0 — 19/11/2026
+
+- Consulta de versões publicadas no Netlify sem digitar `HUB_SYNC_KEY`: executada ao abrir e a cada 5 minutos com a página aberta.
+- Exibição priorizada da versão efetivamente publicada em cards e listas; versão de desenvolvimento continua separada no detalhe.
+- Registro automático de lançamentos mais recentes e changelogs sem duplicações; rollback nunca diminui versão registrada.
+- Função serverless pública divulga somente metadados de `version.json` publicamente acessíveis e associados de forma única a projetos ativos do catálogo. Não divulga inventário privado, token, histórico de deploys ou sites sem associação.
+- Área administrativa Netlify, descoberta de sites não catalogados e histórico de deploys continuam exigindo `HUB_SYNC_KEY`.
+- Catálogo revisão 39 sobre a revisão 38 (FC27 Tracker v1.82.0 registrada; publicação distinta).
+
+## v2.1.16 — 19/11/2026
+
+- Catálogo revisão 38: registra FC 27 Tracker v1.82.0 (auditoria de ratings e raridades femininas).
+- Pendências de cartas especiais, atualizações de fonte e homologação de dados reais explícitas.
+- Não confundir versão registrada com versão do deploy Netlify.
+
+## v2.1.15 — 18/11/2026
+
+- Catálogo revisão 37, FC27 Tracker v1.81.3.
+- Corrigido diagnóstico de versão publicada: Netlify confirmou v1.81.2; v1.81.3 ainda depende de push.
+- Acompanhamento da Central de Atualizações e cache da PWA.
+
+# v2.1.14 — 2026-11-18
+
+- Catálogo revisão 36: FC27 Tracker v1.81.2, correção da Central de Atualizações que não aparecia na v1.81.1.
+- Versão registrada separada de versão publicada; ainda necessário verificar deploy HTTPS e PWA real.
+
+# v2.1.13 — 2026-11-18
+
+- Catálogo revisão 35: FC27 Tracker v1.81.1 com Chute rasteiro, Chute colocado, relatórios, marcos e retrospectiva.
+- Progresso do Tracker atualizado; publicação no Netlify e testes com Supabase real não presumidos.
+
+# v2.1.12 — 2026-11-18
+
+- Catálogo revisão 34: FC27 Tracker v1.81.0 registrada.
+- Gols, acontecimentos decisivos, expulsões, contra-ataques iniciados e respectivos relatórios/marcos.
+- Homologação com Supabase real e publicação no Netlify permanecem pendentes.
+
+# v2.1.11 — 2026-11-18
+
+- Catálogo revisão 33: FC27 Tracker v1.80.0 registrada com cinco novos módulos de Inteligência.
+- Separados o histórico do projeto e o estado publicado no Netlify.
+- Pendência: eventos decisivos de partida, critérios a discutir.
+
+# v2.1.10 — 2026-11-18
+
+- Catálogo revisão 32: FC27 Tracker v1.79.0.
+- Central de relatórios individuais: filtros, ranking de gols/defesas, eficiência registrada e CSV.
+- Versão registrada, não necessariamente publicada no Netlify.
+
+# v2.1.9 — 2026-11-18
+
+- Catálogo revisão 31: FC27 Tracker v1.78.0.
+- Indicadores individuais ampliados: defesas, intervenções, faltas, erros e rankings de goleiros.
+- Versão registrada, não necessariamente publicada no Netlify.
+
+# v2.1.8 — 2026-11-18
+
+- Catálogo revisão 30: FC27 Tracker v1.77.0.
+- Gols especiais: classificações de pênaltis, faltas e golaços sem dupla contagem; histórico do Gauntlet preservado.
+- Versão registrada, não necessariamente publicada no Netlify.
+
+# v2.1.7 — 2026-11-17
+
+- Catálogo revisão 29: FC27 Tracker v1.76.7, segunda rodada visual de cartas.
+- Incluído marco intermediário v1.76.6 no histórico.
+- Versão registrada permanece independente da publicada no Netlify.
+
+# v2.1.6 — 2026-11-17
+
+- Catálogo revisão 28: FC27 Tracker v1.76.5, unificação assistida com prévia, nome/foto escolhidos e histórico consolidado.
+- Mantido o histórico de publicação separado da versão registrada.
+
+# v2.1.5 — 2026-11-17
+
+- Catálogo revisão 27: FC27 Tracker v1.76.4, nova ordem de posições e pé dominante nos onze selecionados.
+- Histórico de versões atualizado sem publicar automaticamente no Netlify.
+
+# v2.1.4 — 2026-11-17
+
+- Catálogo revisão 26: FC 27 Ultimate Tracker v1.76.3.
+- Registro de duas datas para temporada: fim oficial e conclusão do Passe da Temporada.
+- Histórico de versões atualizado sem afetar os sites publicados no Netlify.
+
+# v2.1.3 — 2026-11-17
+
+- Catálogo revisão 25 com FC27 Ultimate Tracker v1.76.2, preservando a distinção entre versão **registrada** e **publicada** no Netlify.
+- Registrada unificação da busca global, busca de formações salvas/utilizadas e atalho Ctrl/⌘ + K.
+- Atualização do Meu Hub + Central, sem deploy automático, sem alterações no Supabase e sem sobrescrever configurações de usuário.
+
+# v2.1.2 — 2026-11-17
+
+- Catálogo revisão 24: FC27 Ultimate Tracker v1.76.1 registrado com Central de Atualizações, version.json no Netlify e fluxo PWA.
+- Meu Hub e Central de Projetos e Versões atualizados para v2.1.2; nenhum projeto foi publicado automaticamente.
+- Preservadas informações Netlify, configurações e distinção entre versão registrada no catálogo e publicada no serviço.
+
+# v2.1.1 — 2026-11-17
+
+- Catálogo rev. 21: FC27 Ultimate Tracker v1.76.0 registrado com alterações de táticas, escalações, avaliação individual, Gauntlet e interface.
+- Versão publicada Netlify permanece distinta da registrada; sem deploy automático.
+- Continuidade e PWA do Hub atualizados, sem alterar configurações Netlify.
+
 # v2.1.0 — 2026-11-17
 
 - Novo botão de atualização do catálogo conforme a versão publicada no Netlify.

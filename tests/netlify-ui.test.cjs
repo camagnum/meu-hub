@@ -12,7 +12,7 @@ test('Netlify UI handles manual update, per-project opt-in, changelog and ignore
   vm.runInNewContext(source,context);
   let saves=0;
   context.window.HubNetlify.init({state:()=>state,save:()=>saves++,compare:core.compare,refresh:()=>0});
-  assert.match(context.window.HubNetlify.view(),/Conectar e sincronizar/);
+  assert.match(context.window.HubNetlify.view(),/Versões públicas/);
   for(const fn of events.submit)fn({target:{id:'net-login'},preventDefault:()=>0});
   await flush();await flush();
   assert.match(context.window.HubNetlify.view(),/Atualizar catálogo para 1.75.4/);

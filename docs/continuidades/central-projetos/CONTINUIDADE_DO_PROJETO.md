@@ -106,3 +106,13 @@ Base oficial: `meu_hub_v1.0.11.zip`; feed rev. 16.
 ## Atualização v2.0.0 (16/11/2026)
 
 Base v1.0.11; novo ZIP `meu_hub_v2.0.0.zip`, raiz `meu-hub`; feed revisão 17. Aba Netlify, função `netlify/functions/netlify-sync.cjs` somente leitura e protegida por `HUB_SYNC_KEY` aleatória; `NETLIFY_ACCESS_TOKEN` exclusivamente no servidor. Metadados do deploy publicado separados dos registros de desenvolvimento, descoberta automática e vínculo manual/automático, histórico e consulta periódica durante sessão. Chave em memória, cache de metadados local. `version.json` obrigatório na raiz publicada; build `node tools/build.cjs`, publish `dist`, deploy via Git ou CLI. Consultas reais e publicação não validadas. Manter `meuhub-state-v1` e mesmo domínio. Dados locais não sincronizados. Guia `docs/NETLIFY_CONFIGURACAO.md`. Atualizar catálogo e continuidade nos próximos releases; sites novos descobertos devem ser confirmados antes de entrar no catálogo.
+
+
+## Registro de 17/11/2026 · FC27 Tracker v1.76.3
+
+Catálogo revisão 26. FC27 Tracker v1.76.3: temporada com fim oficial para estatísticas e data independente e opcional de conclusão do Passe da Temporada. ZIPs v1.76.3 publicados na Biblioteca, mas não implantados no Netlify.
+
+
+## Registro 2026-11-18 — FC27 v1.81.2
+
+Corrigida Central de Atualizações em `pwa.js`: `FALLBACK_HISTORY` tinha sido renomeada indevidamente para `RELEASES` na v1.81.1. Atualizados script de PWA, service worker, manifesto e teste de inicialização, preservando dados. Registrar publicação Netlify somente após conferência da versão publicada.

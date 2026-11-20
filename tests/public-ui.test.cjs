@@ -1,0 +1,31 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
+const core=require('../assets/version-sync.js');
+const source=fs.readFileSync(path.join(__dirname,'../assets/netlify.js'),'utf8');
+const flush=()=>new Promise(r=>setImmediate(r));
+test('keyless startup updates published version and history, detects rollback without downgrading',async()=>{
+  const events={},store=new Map();let calls=0;
+  const state={settings:{netlifyLinks:{}},projects:[{id:'fc27-tracker',name:'FC 27 Ultimate Tracker',folder:'fc27-tracker',url:'',version:'v1.75.0',status:'Ativo'}],releases:[]};
+  let version='1.75.4',saves=0;
+  const document={addEventListener:(type,fn)=>(events[type]??=[]).push(fn),hidden:false,getElementById:()=>({value:''})};
+  const fetcher=async(url,opts)=>{
+    calls++;
+    assert.ok(url.includes('hub-public-versions'));
+    assert.equal(opts.method,'GET');assert.equal(opts.headers,undefined);
+    return {ok:true,json:async()=>({sites:[{id:'public-fc27-tracker',projectId:'fc27-tracker',name:'fc27-tracker',hasPublished:true,versionStatus:'ok',url:'https://fc27-tracker.netlify.app',publishedAt:'2026-11-19T10:00:00Z',metadata:{id:'fc27-tracker',name:'FC 27 Ultimate Tracker',version,releaseDate:'2026-11-19',changelog:['Atualização publicada']}}],checkedAt:'2026-11-19T16:00:00Z',truncated:false})};
+  };
+  const context={window:{HubVersionSync:core},document,localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},fetch:fetcher,URL,Date,AbortSignal,confirm:()=>true,setInterval:()=>0};
+  vm.runInNewContext(source,context);
+  context.window.HubNetlify.init({state:()=>state,save:()=>saves++,compare:core.compare,refresh:()=>0});
+  await flush();await flush();await flush();
+  assert.equal(state.projects[0].version,'v1.75.4');
+  assert.equal(context.window.HubNetlify.displayVersion('fc27-tracker',state.projects[0].version),'v1.75.4');
+  assert.equal(state.releases.length,1);assert.equal(saves,1);
+  version='1.75.2';
+  for(const fn of events.click)await fn({target:{closest:()=>({dataset:{net:'public-sync'}})}});
+  await flush();await flush();
+  assert.equal(state.projects[0].version,'v1.75.4','rollback never downgrades registration');
+  assert.equal(context.window.HubNetlify.displayVersion('fc27-tracker',state.projects[0].version),'v1.75.2','card shows current production after rollback');
+  assert.equal(state.releases.length,1);
+  assert.ok(calls>=2);
+});

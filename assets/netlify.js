@@ -7,21 +7,45 @@
   const KEY='meuhub-netlify-snapshot-v2';
   let snapshot={sites:[],checkedAt:'',total:0};
   try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&Array.isArray(s.sites))snapshot=s}catch{}
+  const PUBLIC_KEY='meuhub-public-versions-v1';
+  let publicSnapshot={sites:[],checkedAt:'',ambiguous:[],truncated:false};
+  try{const s=JSON.parse(localStorage.getItem(PUBLIC_KEY));if(s&&Array.isArray(s.sites))publicSnapshot=s}catch{}
+  let publicBusy=false,publicError='',lastPublicAttempt=0;
   let secret='',busy=false,error='',notice='',history={},api,lastAttempt=0;
+  const publicSites=()=>publicSnapshot.sites||[];
+  const visibleSites=()=>{
+    const items=secret?snapshot.sites.map(s=>({...s})):[];
+    for(const pub of publicSites()){
+      const index=items.findIndex(s=>s.name===pub.name);
+      if(index>=0)items[index]={...items[index],...pub,id:items[index].id,public:true};
+      else items.push({...pub,public:true});
+    }
+    return items;
+  };
+  const published=id=>publicSites().find(s=>s.projectId===(id==='central-projetos'?'meu-hub':id));
+  const displayVersion=(id,registered)=>{
+    const v=published(id)?.metadata?.version;
+    if(!v)return registered;
+    return String(registered||'').startsWith('v')&&!String(v).startsWith('v')?'v'+v:v;
+  };
+  const savePublic=()=>{try{localStorage.setItem(PUBLIC_KEY,JSON.stringify(publicSnapshot))}catch{}};
   const saveSnapshot=()=>{try{localStorage.setItem(KEY,JSON.stringify(snapshot))}catch{}};
   const links=()=>api?.state().settings.netlifyLinks||{};
   const autoSettings=()=>api?.state().settings.netlifyAutoUpdateProjects||{};
-  const found=s=>core.match(s,api.state().projects,snapshot.sites,links());
+  const found=s=>{
+    const p=s.projectId&&api.state().projects.find(p=>p.id===s.projectId);
+    return p?{project:p,method:'public'}:core.match(s,api.state().projects,visibleSites(),links());
+  };
   const matched=s=>found(s)?.project||null;
 
   function publication(id){
     if(!api)return null;
     if(id==='central-projetos')id='meu-hub';
-    return snapshot.sites.find(s=>links()[s.id]===id) || snapshot.sites.find(s=>matched(s)?.id===id) || null;
+    return published(id) || snapshot.sites.find(s=>links()[s.id]===id) || snapshot.sites.find(s=>matched(s)?.id===id) || null;
   }
   function label(s){
     if(!s)return 'Sem vínculo';
-    if(s.versionStatus==='ok')return s.metadata?.id?'Versão publicada':'Versão publicada · sem ID';
+    if(s.versionStatus==='ok')return s.public?'Versão pública verificada':s.metadata?.id?'Versão publicada':'Versão publicada · sem ID';
     return ({not_published:'Sem deploy confirmado',missing:'Sem version.json',invalid:'version.json inválido',protected:'Metadado protegido',unavailable:'Consulta indisponível',not_checked:'Não verificado',no_hostname:'Sem domínio padrão'})[s.versionStatus]||'Não verificado';
   }
   function comparison(s,p){
@@ -51,6 +75,28 @@
     try{data=await r.json()}catch{throw Error('Função indisponível. Publique o Hub com Git ou Netlify CLI.')}
     if(!r.ok){if(r.status===401)secret='';throw Error(data.error||'HTTP '+r.status)}
     return data;
+  }
+  async function syncPublic(){
+    if(publicBusy)return;
+    publicBusy=true;publicError='';lastPublicAttempt=Date.now();
+    try{
+      const r=await fetch('/.netlify/functions/hub-public-versions',{method:'GET',cache:'no-store',credentials:'same-origin',signal:AbortSignal.timeout(45000)});
+      const data=await r.json();
+      if(!r.ok)throw Error(data.error||'Consulta indisponível');
+      if(!Array.isArray(data.sites)||typeof data.checkedAt!=='string')throw Error('Resposta inesperada do servidor');
+      publicSnapshot={sites:data.sites.filter(s=>s&&s.projectId&&s.versionStatus==='ok'&&s.metadata?.version),checkedAt:data.checkedAt,ambiguous:Array.isArray(data.ambiguous)?data.ambiguous:[],truncated:!!data.truncated};
+      savePublic();
+      if(!publicSnapshot.truncated){
+        let count=0;
+        for(const s of publicSites()){
+          const p=matched(s);
+          if(!p||!core.newer(s,p))continue;
+          if(core.apply(api.state(),s,p).updated)count++;
+        }
+        if(count){api.save();notice=`${count} lançamento(s) público(s) incorporado(s) automaticamente ao catálogo.`}
+      }else publicError='Consulta parcial: nenhuma versão foi registrada automaticamente.';
+    }catch(e){publicError=e.message||'Sem acesso às versões públicas. Últimas informações preservadas.'}
+    finally{publicBusy=false;api.refresh()}
   }
   function updateLocal(s,mode){
     const p=matched(s);
@@ -101,30 +147,36 @@
       ${s.metadata&&!s.metadata.id?'<p class="small muted">Este version.json não informa ID; o Hub pode associá-lo por nome, endereço ou vínculo manual quando não há ambiguidades. Adicione o campo id para maior confiabilidade.</p>':''}
       ${s.metadata?.releaseDate?`<p class="small muted">Data declarada: ${escape(s.metadata.releaseDate)}</p>`:''}
       ${s.metadata?.changelog?.length?`<details><summary>Changelog publicado (${s.metadata.changelog.length})</summary><ul>${s.metadata.changelog.map(t=>`<li>${escape(t)}</li>`).join('')}</ul></details>`:''}
-      ${p?`<label class="net-auto-toggle"><input type="checkbox" data-net-auto="${escape(p.id)}" ${enabled?'checked':''}> Atualizar automaticamente este projeto <span class="small muted">(ao sincronizar, somente versões mais recentes)</span></label>`:''}
-      <div class="net-form-row">${select(s)}
+      ${p&&!s.public?`<label class="net-auto-toggle"><input type="checkbox" data-net-auto="${escape(p.id)}" ${enabled?'checked':''}> Atualizar automaticamente este projeto <span class="small muted">(consulta privada)</span></label>`:''}
+      ${s.public?'<p class="small muted">Sincronização pública automática ativa; nenhuma chave necessária.</p>':''}
+      <div class="net-form-row">${s.public?'':select(s)}
         ${!p?`<button class="btn small" data-net="add" data-site="${escape(s.id)}">Adicionar ao catálogo</button>`:''}
         ${available?updateButton(s,p):''}
         ${url(s.url)?`<a class="btn small" href="${escape(url(s.url))}" target="_blank" rel="noopener noreferrer">Abrir site</a>`:''}
         ${url(s.adminUrl)?`<a class="btn small" href="${escape(url(s.adminUrl))}" target="_blank" rel="noopener noreferrer">Netlify</a>`:''}
-        <button class="btn small" data-net="history" data-site="${escape(s.id)}" ${!secret?'disabled':''}>Deploys recentes</button>
+        ${s.public?'':`<button class="btn small" data-net="history" data-site="${escape(s.id)}" ${!secret?'disabled':''}>Deploys recentes</button>`}
       </div>
       ${h?`<div class="net-history">${Array.isArray(h)?h.map(d=>`<div class="net-deploy"><strong>${escape(d.state||'—')}</strong> · ${escape(d.context||'—')} · ${escape(date(d.createdAt))} ${escape(d.title||'')}</div>`).join('')||'Sem deploys.':escape(h)}</div>`:''}
     </article>`;
   }
   function view(){
-    const sites=snapshot.sites, linked=sites.filter(s=>matched(s)).length;
+    const sites=visibleSites(), linked=sites.filter(s=>matched(s)).length;
     const pending=sites.filter(s=>core.newer(s,matched(s))).length;
-    return `<div class="pagehead"><div><span class="eyebrow">PUBLICAÇÕES E VERSÕES</span><h1>Sincronização Netlify</h1><p>Detecte versões mais recentes, atualize o catálogo com um clique ou escolha quais projetos podem ser atualizados automaticamente.</p></div></div>
-      <div class="panel net-control"><form id="net-login"><label for="net-key">Chave de acesso do Hub (não é o token Netlify)</label><div class="net-form-row"><input id="net-key" type="password" minlength="32" autocomplete="off" placeholder="Chave HUB_SYNC_KEY" ${secret?'disabled':''}><button class="btn primary" type="submit" ${busy?'disabled':''}>${busy?'Sincronizando…':secret?'Sincronizar agora':'Conectar e sincronizar'}</button><button type="button" class="btn" data-net="disconnect">Desconectar e limpar cache</button></div></form>
-        <p class="small muted">${secret?'Conectado nesta aba. A consulta é repetida a cada 5 minutos enquanto a página estiver aberta.':'Informe a chave para conectar nesta sessão; ela não é armazenada no navegador.'} As preferências de atualização ficam somente neste navegador.</p>
-        <p class="small muted">Última consulta bem-sucedida: ${escape(date(snapshot.checkedAt))}${busy?' · Consultando…':''}</p>
-        ${error?`<p role="alert" class="net-error">${escape(error)} · Dados anteriores preservados.</p>`:''}
-        ${notice?`<p class="net-notice" role="status">${escape(notice)}</p>`:''}</div>
+    return `<div class="pagehead"><div><span class="eyebrow">PUBLICAÇÕES E VERSÕES</span><h1>Sincronização Netlify</h1><p>As versões públicas são consultadas automaticamente ao abrir o Hub e a cada 5 minutos, sem chave. As ferramentas avançadas da conta continuam protegidas.</p></div></div>
+      <div class="panel net-control"><div class="net-form-row"><div style="flex:1"><strong>Versões públicas · atualização automática</strong><p class="small muted">Última consulta: ${escape(date(publicSnapshot.checkedAt))} · ${publicBusy?'Consultando…':'A consulta ocorre na abertura e a cada 5 minutos com a página aberta.'}</p></div><button class="btn primary" type="button" data-net="public-sync" ${publicBusy?'disabled':''}>${publicBusy?'Verificando…':'Verificar agora'}</button></div>
+        ${publicError?`<p role="alert" class="net-error">${escape(publicError)}</p>`:''}
+        ${publicSnapshot.ambiguous?.length?`<p class="net-error">Vínculos ambíguos: ${escape(publicSnapshot.ambiguous.join(', '))}. Corrija os identificadores publicados.</p>`:''}
+        ${notice?`<p class="net-notice" role="status">${escape(notice)}</p>`:''}
+        <details class="net-detail" style="margin-top:12px"><summary>Ferramentas avançadas da conta (requer chave)</summary>
+          <p class="small muted">Listar todos os sites da conta, descobrir projetos sem versão pública e consultar deploys exige a HUB_SYNC_KEY. Ela não é salva no navegador. A consulta automática de versões não precisa dela.</p>
+          <form id="net-login"><label for="net-key">HUB_SYNC_KEY</label><div class="net-form-row"><input id="net-key" type="password" minlength="32" autocomplete="off" placeholder="Chave para administração" ${secret?'disabled':''}><button class="btn" type="submit" ${busy?'disabled':''}>${busy?'Sincronizando…':secret?'Sincronizar conta':'Conectar conta'}</button><button type="button" class="btn" data-net="disconnect">Desconectar</button></div></form>
+          <p class="small muted">${secret?'Conta conectada nesta aba.':'Sem sessão administrativa.'} Última consulta administrativa: ${escape(date(snapshot.checkedAt))}</p>
+          ${error?`<p role="alert" class="net-error">${escape(error)}</p>`:''}
+        </details></div>
       <div class="statgrid net-stat"><div class="stat"><div class="value">${sites.length}</div><div class="label">Sites encontrados</div></div><div class="stat"><div class="value">${sites.filter(s=>s.metadata).length}</div><div class="label">Versionados</div></div><div class="stat"><div class="value">${linked}</div><div class="label">Vinculados</div></div><div class="stat"><div class="value">${pending}</div><div class="label">Atualizações disponíveis</div></div></div>
       <div class="section-title"><h2 class="h2">Sites descobertos</h2><span class="small muted">Publicações de produção · sem atualizar versões para trás</span></div>
-      ${sites.length?sites.map(siteCard).join(''):'<div class="empty">Conecte sua conta para consultar os sites publicados.</div>'}
-      <div class="panel"><h3>Como funciona a atualização automática</h3><p class="small muted">A cada sincronização bem-sucedida, projetos com automação ativada recebem uma versão publicada mais recente e um registro histórico com o changelog do version.json. Projetos não selecionados exibem o botão Atualizar catálogo. O Hub nunca reduz versões após rollback e não inventa changelogs. Os dados e as preferências ficam no armazenamento local deste navegador; para atualizar sem abrir o Hub seria necessário um banco de dados e uma rotina de servidor.</p></div>`;
+      ${sites.length?sites.map(siteCard).join(''):'<div class="empty">Nenhum site com version.json público associado ao catálogo foi identificado. Os projetos continuam disponíveis no catálogo local.</div>'}
+      <div class="panel"><h3>Como funciona a atualização automática</h3><p class="small muted">As versões públicas verificadas entram automaticamente no catálogo local e no histórico, sem chave. A versão publicada é exibida em destaque, inclusive quando existe um rollback; a versão registrada é preservada separadamente e nunca reduzida. A consulta funciona na abertura e a cada 5 minutos com o Hub aberto. Dados pessoais e histórico administrativo do Netlify não são expostos; a sincronização entre navegadores requer um backend próprio.</p></div>`;
   }
   function init(bind){
     api=bind;
@@ -153,10 +205,12 @@
     });
     document.addEventListener('click',async e=>{
       const b=e.target.closest('[data-net]');if(!b)return;
-      const s=snapshot.sites.find(x=>x.id===b.dataset.site);
+      const s=visibleSites().find(x=>x.id===b.dataset.site);
       if(b.dataset.net==='disconnect'){
         if(busy)return;
         secret='';snapshot={sites:[],checkedAt:'',total:0};history={};error='';notice='';saveSnapshot();api.refresh();
+      }else if(b.dataset.net==='public-sync'){
+        syncPublic();
       }else if(b.dataset.net==='add'&&s&&!matched(s)){
         const st=api.state(),id=s.metadata?.id||'netlify-'+s.id;
         if(st.projects.some(p=>p.id===id)){error='O identificador já existe. Utilize o vínculo manual.';api.refresh();return;}
@@ -176,8 +230,9 @@
         api.refresh();
       }
     });
-    setInterval(()=>{if(secret&&!busy&&!document.hidden&&Date.now()-lastAttempt>=300000)sync()},30000);
-    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&secret&&!busy&&Date.now()-lastAttempt>=300000)sync()});
+    setInterval(()=>{if(!document.hidden&&!publicBusy&&Date.now()-lastPublicAttempt>=300000)syncPublic();if(secret&&!busy&&!document.hidden&&Date.now()-lastAttempt>=300000)sync()},30000);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!publicBusy&&Date.now()-lastPublicAttempt>=300000)syncPublic();if(!document.hidden&&secret&&!busy&&Date.now()-lastAttempt>=300000)sync()});
+    Promise.resolve().then(()=>syncPublic());
   }
-  window.HubNetlify={init,view,info,details,publication};
+  window.HubNetlify={init,view,info,details,publication,displayVersion};
 })();
