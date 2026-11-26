@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": 39,
-  "generatedAt": "2026-11-19T16:58:12-03:00",
+  "catalogRevision": 40,
+  "generatedAt": "2026-11-26T02:01:44.976Z",
   "projects": [
     {
       "id": "meu-hub",
@@ -317,6 +317,21 @@
       "color": "#b6a4ff",
       "favorite": false,
       "order": 20
+    },
+    {
+      "id": "fc27-tracker-lite",
+      "name": "FC 27 Ultimate Tracker Lite",
+      "description": "PWA com registro lance a lance, sessões de jogo, formações e Hall da Fama.",
+      "category": "Games",
+      "platform": "Notebook e celular",
+      "status": "Ativo",
+      "version": "v1.6.0",
+      "url": "https://fc-tracker-lite.netlify.app",
+      "folder": "fc27-tracker-lite",
+      "icon": "game",
+      "color": "#9dd1ec",
+      "favorite": false,
+      "order": 21
     }
   ],
   "releases": [
@@ -1031,6 +1046,14 @@
       "date": "2026-11-19",
       "type": "Atualização",
       "notes": "Sincronização automática sem chave para version.json público dos apps já catalogados. Mostra versão publicada como principal; mantém desenvolvimento separado e histórico sem downgrade. Informações administrativas do Netlify continuam protegidas."
+    },
+    {
+      "id": "fc27-tracker-lite-v1.6.0",
+      "projectId": "fc27-tracker-lite",
+      "version": "v1.6.0",
+      "date": "2026-11-25",
+      "type": "Atualização",
+      "notes": "Matriz de frequência por placar no Dashboard, consulta das partidas e destaque de Scorigami."
     }
   ],
   "tasks": [
